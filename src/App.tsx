@@ -71,7 +71,8 @@ function App() {
         return
       }
       try {
-        const response = await fetch('/api/referral/me', {
+        const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
+        const response = await fetch(`${apiBaseUrl}/api/referral/me`, {
           headers: { Authorization: `tma ${initData}` },
         })
         const result = await response.json()
