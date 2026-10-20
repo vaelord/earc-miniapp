@@ -32,7 +32,7 @@ React + Vite Mini App with a small Express API for unique community invite links
 5. In a second PowerShell window, start the tunnel (keep it open):
 
    ```powershell
-   & "C:\Users\emree\Downloads\cloudflared-windows-amd64.exe" tunnel --url http://localhost:5173
+   & "C:\....\cloudflared-windows-amd64.exe" tunnel --url http://localhost:5173
    ```
 
 6. Copy the new `https://....trycloudflare.com` URL into `.env` as `PUBLIC_BASE_URL`. If the URL changed, update it and restart the tunnel if necessary.
