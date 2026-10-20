@@ -144,6 +144,18 @@ function App() {
     setApiError('')
   }, [])
 
+  if (loading) {
+    return (
+      <main className="loading-screen" role="status" aria-label="Loading Ether Archive">
+        <div className="loading-brand">
+          <span className="loading-ring" aria-hidden="true" />
+          <img src="/assets/ether-archive-mark.svg" alt="Ether Archive" className="loading-logo" />
+        </div>
+        <span className="loading-caption">OPENING THE ARCHIVE</span>
+      </main>
+    )
+  }
+
   return (
     <main className="app-shell">
       <BackgroundEffects />
