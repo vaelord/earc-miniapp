@@ -8,6 +8,7 @@ import { Toast } from './components/Toast'
 import { TopBar } from './components/TopBar'
 import { useTelegramApp } from './hooks/useTelegramApp'
 import { openDeviceShare, triggerHaptic, getTelegramWebApp } from './lib/telegram'
+import { Onboarding } from './components/Onboarding'
 
 type ReferralProfile = {
   userId: string
@@ -18,6 +19,9 @@ type ReferralProfile = {
 }
 
 function App() {
+  const [showOnboarding, setShowOnboarding] = useState(() => {
+  return localStorage.getItem('earc_onboarding_completed') !== 'true'
+})
   const [activeTab, setActiveTab] = useState<AppTab>('Referral')
   const [copied, setCopied] = useState(false)
   const [notice, setNotice] = useState('')
@@ -143,6 +147,17 @@ function App() {
     setActiveTab(tab)
     setApiError('')
   }, [])
+
+if (showOnboarding) {
+  return (
+    <Onboarding
+      onComplete={() => {
+        localStorage.setItem('earc_onboarding_completed', 'true')
+        setShowOnboarding(false)
+      }}
+    />
+  )
+}
 
   if (loading) {
     return (
